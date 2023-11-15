@@ -1,0 +1,77 @@
+@import "../../styles/responsive.scss";
+@import "../../styles/variables.scss";
+.navbar {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .icon {
+      @include sm {
+        display: none;
+      }
+    }
+
+    .notification {
+      position: relative;
+
+      span {
+        background-color: red;
+        color: white;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: round($number: 20);
+        object-fit: cover;
+      }
+    }
+  }
+}
+.loginButton {
+  color: $soft-color;
+  font-size: 12px;
+  font-weight: 200;
+  color: black;
+  width: 150px;
+  height: 40px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  text-transform: uppercase;
+  padding: 10px 20px;
+ 
+}
+.loginButton:hover {
+  background-color: #19497d;
+  color: antiquewhite;
+}
