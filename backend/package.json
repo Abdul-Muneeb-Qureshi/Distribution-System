@@ -1,0 +1,12 @@
+{
+  "name": "labassign",
+  "version": "1.0.0",
+  "description": "API for Card",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Abdullah",
+  "license": "ISC"
+}
