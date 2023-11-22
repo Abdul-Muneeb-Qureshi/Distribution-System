@@ -1,122 +1,124 @@
-import User from "../models/user";
-import Doctor from "../models/doctors";
-import { hashPassword } from "../utils/auth";
+const User = require("../models/user");
+const rider = require("../models/rider");
+// const { hashPassword } = require("../utils/auth");
 
-export const AddDoctor = async (req, res) => {
+const Addrider = async (req, res) => {
   try {
     // Create a user record
     const { password, ...userData } = req.body;
-    const hashedPassword = await hashPassword(password);
+    // const hashedPassword = await hashPassword(password);
 
     const user = new User({
       ...userData,
-      password: hashedPassword,
+      password: password,
     });
     await user.save();
 
-    // Create a doctor record and associate it with the user
-    const doctor = new Doctor({
+    // Create a rider record and associate it with the user
+    const newrider = new rider({
       user: user._id,
-      ...req.body, // Include other doctor-related attributes here
+      ...req.body, // Include other rider-related attributes here
     });
-    await doctor.save();
+    await newrider.save();
 
-    res.status(201).json(doctor);
+    res.status(201).json(rider);
   } catch (error) {
     res
       .status(500)
-      .json({ error: "An error occurred while adding the doctor." });
+      .json({ error: "An error occurred while adding the rider." });
   }
 };
-export const getDoctors = async (req, res) => {
-  // console.log("Hello");
+
+const getriders = async (req, res) => {
   try {
-    const doctors = await Doctor.find();
-    return res.json(doctors);
+    const riders = await rider.find();
+    return res.json(riders);
   } catch (error) {}
 };
 
-export const getDoctorsId = async (req, res) => {
-  // console.log("Hello");
+const getridersId = async (req, res) => {
   try {
-    const doctors = await Doctor.find();
-    const doctorsId = doctors.map((u) => u._id);
-    res.status(200).json(doctorsId);
+    const riders = await rider.find();
+    const ridersId = riders.map((u) => u._id);
+    res.status(200).json(ridersId);
   } catch (error) {}
 };
 
-export const getDoctorByUserId = async (req, res) => {
+const getriderByUserId = async (req, res) => {
   try {
-    // Use the Doctor model to find the doctor based on the user._id
-    const doctor = await Doctor.findOne({}).populate("user");
+    // Use the rider model to find the rider based on the user._id
+    const rider = await rider.findOne({}).populate("user");
 
-    if (!doctor) {
-      return res
-        .status(404)
-        .json({ message: "Doctor not found for this user" });
+    if (!rider) {
+      return res.status(404).json({ message: "rider not found for this user" });
     }
 
     // Access the user._id and compare it with the provided userId
-    if (doctor.user._id.toString() === req.params.id) {
-      res.json(doctor);
+    if (rider.user._id.toString() === req.params.id) {
+      res.json(rider);
     } else {
-      return res
-        .status(404)
-        .json({ message: "Doctor not found for this user" });
+      return res.status(404).json({ message: "rider not found for this user" });
     }
   } catch (error) {}
 };
 
-export const getDoctor = async (req, res) => {
+const getrider = async (req, res) => {
   try {
-    const doctors = await Doctor.findOne({ _id: req.params.id }).populate(
-      "user"
-    );
-    res.status(200).json(doctors);
+    const riders = await rider.findOne({ _id: req.params.id }).populate("user");
+    res.status(200).json(riders);
   } catch (error) {
     res
       .status(500)
-      .json({ error: "An error occurred while fetching the list of doctors." });
+      .json({ error: "An error occurred while fetching the list of riders." });
   }
 };
 
-export const editDoctor = async (req, res) => {
+const editrider = async (req, res) => {
   try {
-    const doctorId = req.params.id;
+    const riderId = req.params.id;
     const updatedData = req.body;
-    // Update the doctor's information
+    // Update the rider's information
 
-    const updatedDoctor = await Doctor.findByIdAndUpdate(
-      { _id: doctorId },
+    const updatedrider = await rider.findByIdAndUpdate(
+      { _id: riderId },
       updatedData,
       { new: true }
     );
     console.log(updatedData);
 
-    if (!updatedDoctor) {
-      return res.status(404).json({ error: "Doctor not found" });
+    if (!updatedrider) {
+      return res.status(404).json({ error: "rider not found" });
     }
 
     // Update the associated user information
-    const userId = updatedDoctor.user;
+    const userId = updatedrider.user;
     const updatedUser = await User.findByIdAndUpdate(
       { _id: userId },
       updatedData,
       { new: true }
     );
 
-    res.status(200).json({ Doctor: updatedDoctor, User: updatedUser });
+    res.status(200).json({ rider: updatedrider, User: updatedUser });
   } catch (error) {
     res
       .status(500)
-      .json({ error: "An error occurred while updating the doctor." });
+      .json({ error: "An error occurred while updating the rider." });
   }
 };
-export const delDoctor = async (req, res) => {
-  // console.log("Hello");
-  // console.log(req.params.id);
+
+const delrider = async (req, res) => {
   try {
-    const doctor = await Doctor.findOneAndDelete({ _id: req.params.id });
-    return res.json(doctor);
+    const rider = await rider.findOneAndDelete({ _id: req.params.id });
+    return res.json(rider);
   } catch (error) {}
+};
+
+module.exports = {
+  Addrider,
+  getriders,
+  getridersId,
+  getriderByUserId,
+  getrider,
+  editrider,
+  delrider,
 };

@@ -7,13 +7,13 @@ const checkRole = require("../utils/roleMiddleware");
 // Create a new user
 router.post("/employee", employeeController.createEmployee);
 // update the user
-router.put("/employee/:id", userController.updateEmployee);
+router.put("/employee/:id", employeeController.updateEmployee);
 // delete the user
-router.delete("/employee/:id", userController.deleteEmployee);
+router.delete("/employee/:id", employeeController.deleteEmployee);
 //get all user
-router.get("/employee", userController.getAllemployees);
+router.get("/employee", employeeController.getAllEmployees);
 // login the user
-router.post("/login", userController.login);
+router.post("/login", employeeController.login);
 // authorization
 router.get(
   "/dashboard",
