@@ -1,12 +1,19 @@
 {
-  "name": "labassign",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "API for Card",
-  "main": "index.js",
+  "description": "Home Assignment",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Abdullah",
-  "license": "ISC"
+  "author": "ilyas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.5",
+    "node": "^21.1.0"
+  }
 }
