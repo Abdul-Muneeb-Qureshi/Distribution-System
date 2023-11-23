@@ -383,46 +383,15 @@ export const barChartBoxVisit = {
 };
 //employees
 export const userRows = [
-  {
-    id: 1,
-    img: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    lastName: "Hubbard",
-    firstName: "Eula",
-    email: "kewez@@gmail.com",
-    phone: "123 456 789",
-    createdAt: "01.02.2023",
-    verified: true,
-  },
-  {
-    id: 2,
-    img: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    lastName: "Manning",
-    firstName: "Stella",
-    email: "comhuhmit@gmail.com",
-    phone: "123 456 789",
-    createdAt: "01.02.2023",
-    verified: true,
-  },
-  {
-    id: 3,
-    img: "https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    lastName: "Greer",
-    firstName: "Mary",
-    email: "ujudokon@hottmail.com",
-    phone: "123 456 789",
-    createdAt: "01.02.2023",
-    verified: true,
-  },
-  {
-    id: 4,
-    img: "https://images.pexels.com/photos/871495/pexels-photo-871495.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    lastName: "Williamson",
-    firstName: "Mildred",
-    email: "tinhavabe@gmail.com",
-    phone: "123 456 789",
-    createdAt: "01.02.2023",
-    verified: true,
-  },
+  // {
+  //   id: 4,
+  //   lastName: "Williamson",
+  //   firstName: "Mildred",
+  //   email: "tinhavabe@gmail.com",
+  //   phone: "123 456 789",
+  //   createdAt: "01.02.2023",
+  //   verified: true,
+  // },
 ];
 
 export const ridersRows = [
