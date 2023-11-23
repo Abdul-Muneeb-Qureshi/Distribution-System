@@ -1,8 +1,35 @@
 const mongoose = require("mongoose");
 const employeeSchema = mongoose.Schema(
   {
-    userName: String,
-    password: String,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+
+    firstname: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    lastname: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+
+    email: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    phoneNumber: {
+      type: String,
+      trim: true,
+    },
+    verified: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true }
 );
