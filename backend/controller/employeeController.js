@@ -7,7 +7,8 @@ async function createEmployee(req, res) {
     const newEmployee = await employee.create(req.body);
     res.status(201).json(newEmployee);
   } catch (error) {
-    res.status(500).json({ error: error });
+    console.error("Error creating employee:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 }
 
