@@ -258,10 +258,10 @@ export const chartBoxUser = {
   ],
 };
 
-export const chartBoxProduct = {
+export const chartBoxEmployees = {
   color: "skyblue",
   icon: "/productIcon.svg",
-  title: "Total Products",
+  title: "Total Employees",
   number: "238",
   dataKey: "products",
   percentage: 21,

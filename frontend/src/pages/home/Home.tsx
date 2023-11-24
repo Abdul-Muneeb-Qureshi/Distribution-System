@@ -7,7 +7,7 @@ import {
   barChartBoxRevenue,
   barChartBoxVisit,
   chartBoxConversion,
-  chartBoxProduct,
+  chartBoxEmployees,
   chartBoxRevenue,
   chartBoxUser,
 } from "../../data";
@@ -23,7 +23,7 @@ const Home = () => {
         <ChartBox {...chartBoxUser} />
       </div>
       <div className="box box3">
-        <ChartBox {...chartBoxProduct} />
+        <ChartBox {...chartBoxEmployees} />
       </div>
       <div className="box box4">
         <PieChartBox />
