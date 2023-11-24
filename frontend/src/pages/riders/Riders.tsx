@@ -43,56 +43,14 @@ const columns: GridColDef[] = [
     width: 150,
     type: "boolean",
   },
-  // {
-  //   field: "img",
-  //   headerName: "Image",
-  //   width: 100,
-  //   renderCell: (params) => {
-  //     return <img src={params.row.img || "/noavatar.png"} alt="" />;
-  //   },
-  // },
-  // {
-  //   field: "title",
-  //   type: "string",
-  //   headerName: "Title",
-  //   width: 250,
-  // },
-  // {
-  //   field: "color",
-  //   type: "string",
-  //   headerName: "Color",
-  //   width: 150,
-  // },
-  // {
-  //   field: "price",
-  //   type: "string",
-  //   headerName: "Price",
-  //   width: 200,
-  // },
-  // {
-  //   field: "producer",
-  //   headerName: "Producer",
-  //   type: "string",
-  //   width: 200,
-  // },
-  // {
-  //   field: "createdAt",
-  //   headerName: "Created At",
-  //   width: 200,
-  //   type: "string",
-  // },
-  // {
-  //   field: "inStock",
-  //   headerName: "In Stock",
-  //   width: 150,
-  //   type: "boolean",
-  // },
 ];
 
 const riders = () => {
   const [open, setOpen] = useState(false);
 
   // TEST THE API
+
+  /* commenting for some time */
 
   // const { isLoading, data } = useQuery({
   //   queryKey: ["allproducts"],
@@ -110,7 +68,7 @@ const riders = () => {
       </div>
       <DataTable slug="products" columns={columns} rows={ridersRows} />
       {/* TEST THE API */}
-
+      {/* commenting for some time */}
       {/* {isLoading ? (
         "Loading..."
       ) : (
