@@ -13,7 +13,7 @@ const Signup: React.FC = () => {
   const handleSignup = async () => {
     try {
       // Make a POST request to the signup API endpoint
-      const response = await fetch("http://localhost:8800/api/users", {
+      const response = await fetch("http://localhost:3006/api/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

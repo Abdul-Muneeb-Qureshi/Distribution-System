@@ -4,15 +4,41 @@ import { useNavigate } from "react-router-dom";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-const Login: React.FC = () => {
+const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [role, setRole] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleLogin = () => {
-    // Add your login logic here
+  const handleLogin = async () => {
+    try {
+      // Make a POST request to the login API endpoint
+      const response = await fetch("http://localhost:3006/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      // Check if the request was successful (status code 2xx)
+      if (response.ok) {
+        console.log("Login successful!");
+        // Add your logic here after successful login
+        onLogin();
+        navigate("/dashboard"); // Redirect to the dashboard or home page after successful login
+      } else {
+        console.error("Error logging in:", response.statusText);
+        // Handle the error accordingly
+      }
+    } catch (error) {
+      console.error("Error logging in");
+      // Handle the error accordingly
+    }
   };
 
   const handleTogglePassword = () => {
@@ -87,47 +113,6 @@ const Login: React.FC = () => {
         </form>
       </div>
     </div>
-    //old cpde
-    // <div className="login-container mt-5 pt-5 ">
-
-    //   <h1>Login</h1>
-    //   <div className="input-group mt-5 flex items-center">
-    //     <i className="fas fa-envelope  text-primary"></i>
-    //     <input
-    //       type="email"
-    //       value={email}
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       placeholder="Enter your email"
-    //       className="custom-input "
-    //     />
-    //   </div>
-    //   <div className="input-group">
-    //     <div className="password-input mt-5 flex items-center">
-    //       <i className="fas fa-lock  text-primary"></i>
-    //       <input
-    //         type={showPassword ? "text" : "password"}
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         placeholder="Enter your password"
-    //         className="custom-input"
-    //       />
-    //       <i
-    //         className={`eye-icon ${showPassword ? "visible" : "hidden"}`}
-    //         onClick={handleTogglePassword}
-    //       />
-    //     </div>
-    //   </div>
-
-    //   <div className="forgot-password" onClick={handleForgotPassword}>
-    //     Forgot Password?
-    //   </div>
-    //   <button className="login-button" onClick={handleLogin}>
-    //     Login
-    //   </button>
-    //   <div className="signup-link mt-5" onClick={handleSignup}>
-    //     <span style={{ color: "black" }}>Don't have an account?</span> Sign Up
-    //   </div>
-    // </div>
   );
 };
 
