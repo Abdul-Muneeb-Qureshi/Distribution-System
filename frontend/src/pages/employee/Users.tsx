@@ -67,6 +67,23 @@ const Users = () => {
     queryFn: () =>
       fetch("http://localhost:3006/api/employee").then((res) => res.json()),
   });
+
+  // Function to handle delete operation
+  const handleDelete = async (id: number) => {
+    try {
+      // Call the delete API endpoint
+      await fetch(`http://localhost:3006/api/employee/${id}`, {
+        method: "DELETE",
+      });
+
+      // Update the state or refetch data as needed
+      // For example, you can refetch the data using react-query or other state management tools
+
+      console.log(`Employee with ID ${id} deleted successfully`);
+    } catch (error) {
+      console.error(`Error deleting employee`);
+    }
+  };
   // Check if data is undefined or still loading
   if (isLoading || data === undefined) {
     return "Loading...";
@@ -88,7 +105,12 @@ const Users = () => {
       </div>
 
       {/* DataTable with fetched rows */}
-      <DataTable slug="prod" columns={columns} rows={dataWithId} />
+      <DataTable
+        slug="prod"
+        columns={columns}
+        rows={dataWithId}
+        onDelete={handleDelete}
+      />
 
       {open && <Add slug="user" columns={columns} setOpen={setOpen} />}
     </div>

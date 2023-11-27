@@ -92,7 +92,7 @@ const riders = () => {
       </div>
      
       {/* DataTable with fetched rows */}
-      <DataTable slug="prod" columns={columns} rows={dataWithId} />
+      {/* <DataTable slug="prod" columns={columns} rows={dataWithId} /> */}
       {open && <Add slug="product" columns={columns} setOpen={setOpen} />}
     </div>
   );
