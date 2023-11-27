@@ -1,10 +1,11 @@
-import { useState } from "react";
-import "./riders.scss";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import DataTable from "../../components/dataTable/DataTable";
+import "./Users.scss";
+import { useState } from "react";
 import Add from "../../components/addEmployee/Add";
-import { GridColDef } from "@mui/x-data-grid";
-import { ridersRows } from "../../data";
+import { userRows } from "../../data";
 import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -45,11 +46,8 @@ const columns: GridColDef[] = [
     type: "boolean",
   },
 ];
-
-// ... (your imports)
-
 // Define an interface for the row
-interface riderRow {
+interface EmployeeRow {
   _id: string;
   firstName: string;
   lastName: string;
@@ -60,42 +58,41 @@ interface riderRow {
   __v: number;
   phoneNumber: string;
 }
-
-const riders = () => {
+const Users = () => {
   const [open, setOpen] = useState(false);
 
   // TEST THE API
   const { isLoading, data } = useQuery({
-    queryKey: ["riders"],
+    queryKey: ["employees"],
     queryFn: () =>
       fetch("http://localhost:3006/api/employee").then((res) => res.json()),
   });
-
   // Check if data is undefined or still loading
   if (isLoading || data === undefined) {
     return "Loading...";
   }
 
   // Add 'id' property to each row in the data
-  const dataWithId: riderRow[] = data.map(
-    (row: riderRow, index: number) => ({
+  const dataWithId: EmployeeRow[] = data.map(
+    (row: EmployeeRow, index: number) => ({
       ...row,
       id: index + 1,
     })
   );
 
   return (
-    <div className="riders">
+    <div className="users">
       <div className="info">
-        <h1>Riders</h1>
-        <button onClick={() => setOpen(true)}>Add New Riders</button>
+        <h1>Users</h1>
+        <button onClick={() => setOpen(true)}>Add New User</button>
       </div>
-     
+
       {/* DataTable with fetched rows */}
       <DataTable slug="prod" columns={columns} rows={dataWithId} />
-      {open && <Add slug="product" columns={columns} setOpen={setOpen} />}
+
+      {open && <Add slug="user" columns={columns} setOpen={setOpen} />}
     </div>
   );
 };
 
-export default riders;
+export default Users;

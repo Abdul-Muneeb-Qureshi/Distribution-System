@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Home from "./pages/home/Home";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Users from "./pages/users/Users";
+import Users from "./pages/employee/Users";
 import Products from "./pages/riders/Riders";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
