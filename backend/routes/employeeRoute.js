@@ -14,6 +14,10 @@ router.delete("/employee/:id", employeeController.deleteEmployee);
 router.get("/employee", employeeController.getAllEmployees);
 // login the user
 router.post("/login", employeeController.login);
+//log table
+router.get("/logs", employeeController.getLogs);
+router.post("/logs", employeeController.createLog);
+
 // authorization
 router.get(
   "/dashboard",
